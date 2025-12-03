@@ -1,1 +1,37 @@
-<p>registro-maestros works!</p>
+<div class="wrapper">
+  <!-- Va a englobar todo el formulario con la cabecera -->
+  <div class="section-registro">
+    <div class="body-registro">
+      <div class="row mt-3 mb-3">
+        <div class="form-group col-12">
+          <label class="title-user" for="tipo_usuario">Ingresa los datos del maestro</label>
+        </div>
+      </div>
+      <!-- TODO: Aquí van todos los inputs para el formulario del maestro -->
+
+      <!-- Select de áreas de investigación -->
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Área de investigación</mat-label>
+        <mat-select [(ngModel)]="maestro.area_investigacion">
+          <mat-option *ngFor="let area of areas" [value]="area.viewValue">
+            {{area.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="errors.area_investigacion" class="invalid-feedback">{{ errors.area_investigacion }}</div>
+
+      <div class="select-materias">
+        <div class="row mt-3 mb-3">
+          <div class="form-group col-12">
+            <label class="title-materias" for="tipo_usuario">Selecciona las materias a impartir</label>
+          </div>
+        </div>
+        <div class="checkbox-group" *ngFor="let materia of materias; let i = index">
+          <mat-checkbox class="checkbox-item opc-sc" name="opsc" (change)="checkboxChange($event)" value="{{materia.nombre}}" [checked]="revisarSeleccion(materia.nombre)">
+              <div class="d-checkbox-nombre">{{materia.nombre}}</div>
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
