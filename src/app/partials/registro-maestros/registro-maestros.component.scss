@@ -1,15 +1,18 @@
-.wrapper{
+// ============================================
+// 📝 FORMULARIO DE REGISTRO MAESTROS - DISEÑO MODERNO
+// ============================================
+
+.wrapper {
   height: 100%;
   width: 100%;
-  //Flex
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  background-color: #FFFFFF;
+  background: transparent;
 }
 
-.section-registro{
+.section-registro {
   width: 100%;
   height: 100%;
   display: flex;
@@ -18,9 +21,9 @@
   align-items: center;
 }
 
-.body-registro{
+.body-registro {
   width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -29,81 +32,172 @@
   gap: 1.5rem;
 }
 
-.title-user{
-  font-size: 28px;
+.title-user {
+  font-size: 1.75rem;
   text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 2px;
-  color: #231F20;
+  font-family: 'Nexa-Bold';
+  letter-spacing: 1px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-transform: capitalize;
   opacity: 1;
+  animation: fadeInLeft 0.6s ease;
 }
 
-.title-materias{
-  font-size: 18px;
+.title-materias {
+  font-size: 1.125rem;
   text-align: center;
-  font-family: Nexa-Bold;
-  letter-spacing: 2px;
-  color: #231F20;
+  font-family: 'Nexa-Bold';
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
   opacity: 1;
+  margin-top: 1rem;
 }
 
-.section-buttons{
+.section-buttons {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3rem;
+  gap: 1rem;
 }
 
+// ============================================
+// 🎨 BOTONES MODERNOS
+// ============================================
 .btn-primary {
   width: 208px;
   height: 48px;
-  background-color: #0092B8!important;
-  border-color: #0092B8!important;
-  border-radius: 8px!important;
+  background: var(--gradient-accent) !important;
+  border: none !important;
+  border-radius: var(--border-radius-md) !important;
   opacity: 1;
-  //Fuente
   text-align: center;
-  font-family: Nexa-Bold;
-  font-size: 16px;
+  font-family: 'Nexa-Bold';
+  font-size: 1rem;
   font-weight: bold;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(79, 172, 254, 0.6);
+
+    &::before {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
 }
 
-.btn-primary:hover {
-  background-color: #017895!important;
-  border-color: #017895!important;
-
-}
-
-.btn-danger{
+.btn-danger {
   width: 208px;
   height: 48px;
-  border-radius: 8px!important;
+  background: var(--gradient-secondary) !important;
+  border: none !important;
+  border-radius: var(--border-radius-md) !important;
   opacity: 1;
-  //Fuente
   text-align: center;
-  font-family: Nexa-Bold;
-  font-size: 16px;
+  font-family: 'Nexa-Bold';
+  font-size: 1rem;
   font-weight: bold;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.6);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
 }
 
-
-mat-form-field{
-  width: 100%!important;
-  height: 48px!important;
-  text-align: left!important;
+// ============================================
+// 📋 CAMPOS DE FORMULARIO
+// ============================================
+mat-form-field {
+  width: 100% !important;
+  min-height: 48px !important;
+  text-align: left !important;
 }
 
-//Checkbox
-.checkbox-group{
+::ng-deep .mat-mdc-text-field-wrapper {
+  background: rgba(30, 36, 66, 0.5) !important;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal);
+
+  &:hover {
+    background: rgba(30, 36, 66, 0.7) !important;
+  }
+}
+
+::ng-deep .mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-mdc-form-field {
+  .mat-mdc-input-element {
+    color: var(--color-text-primary) !important;
+    font-family: 'Nexa' !important;
+    font-size: 1rem !important;
+  }
+
+  .mat-mdc-floating-label {
+    color: var(--color-text-muted) !important;
+    font-family: 'Nexa' !important;
+  }
+
+  &.mat-focused {
+    .mat-mdc-floating-label {
+      color: var(--color-neon-cyan) !important;
+    }
+  }
+}
+
+::ng-deep .mat-mdc-notch-piece {
+  border-color: var(--glass-border) !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused {
+  .mat-mdc-notch-piece {
+    border-color: var(--color-neon-cyan) !important;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
+  }
+}
+
+// ============================================
+// ☑️ CHECKBOXES MODERNOS
+// ============================================
+.checkbox-group {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -111,36 +205,79 @@ mat-form-field{
   align-items: center;
   margin-top: 15px;
   padding-left: 3px;
-  //gap: 10px;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.checkbox-item{
+.checkbox-item {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 70%;
   margin-left: 5px;
+  padding: 0.5rem 1rem;
+  background: rgba(30, 36, 66, 0.3);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  border: 1px solid var(--glass-border);
+
+  &:hover {
+    background: rgba(30, 36, 66, 0.5);
+    border-color: var(--color-neon-cyan);
+    transform: translateX(5px);
+  }
 }
 
-.d-checkbox-nombre{
+.d-checkbox-nombre {
   text-align: left;
-  font-family: Nexa;
-  font-size: 16px;
-  letter-spacing: 0px;
-  color: #000000;
+  font-family: 'Nexa';
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  color: var(--color-text-secondary);
   opacity: 1;
   margin-left: 10px;
+  transition: color var(--transition-fast);
 }
 
-//Estilos para el checkbox
+.checkbox-item:hover .d-checkbox-nombre {
+  color: var(--color-text-primary);
+}
+
+// Estilos para el checkbox de Material
 ::ng-deep .mdc-checkbox__background {
   transform: scale(1.5);
-  background-color: #F6F4F5;
-  border: 1px solid #F6F4F5;
+  background-color: rgba(30, 36, 66, 0.5) !important;
+  border: 2px solid var(--glass-border) !important;
+  border-radius: 4px;
+  transition: all var(--transition-normal);
 }
 
-::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background, .mdc-checkbox__ripple {
-  background-color: #0092B8 !important;
-  border-color: #0092B8 !important;
+::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background,
+::ng-deep .mdc-checkbox__ripple {
+  background-color: var(--color-neon-cyan) !important;
+  border-color: var(--color-neon-cyan) !important;
+  box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+::ng-deep .mdc-checkbox__checkmark {
+  color: var(--color-bg-primary) !important;
+}
+
+// ============================================
+// 📱 RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  .section-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-danger {
+    width: 100%;
+  }
+
+  .checkbox-item {
+    width: 100%;
+  }
 }

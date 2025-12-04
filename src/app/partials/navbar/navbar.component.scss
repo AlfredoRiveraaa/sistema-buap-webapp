@@ -1,33 +1,90 @@
-.wrapper{
+// ============================================
+// 🧭 NAVBAR - DISEÑO GLASSMORPHISM (SIN ANIMACIONES)
+// ============================================
+
+.wrapper {
   width: 100vw;
-  //height: 100vh;
-}
-.bg-light{
-  background-color: #003B5C!important;
+  position: relative;
+  z-index: 1000;
 }
 
-.navbar{
-  padding: 0 0 0 0!important;
+.bg-light {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-.navbar-brand{
-  padding-left: 20px;
-  font-size: 28px;
-  font-family: Nexa;
+.navbar {
+  padding: 0 !important;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    opacity: 0.5;
+  }
+}
+
+.navbar-brand {
+  padding-left: 2rem;
+  font-size: 1.75rem;
+  font-family: 'Nexa-Bold';
   text-align: center;
   opacity: 1;
-  color: #FFFFFF;
-  margin: 0 0 0 0!important;
+  color: var(--color-text-primary);
+  margin: 0 !important;
+  transition: color 0.2s ease;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 2rem;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    transition: width 0.2s ease;
+  }
+
+  &:hover {
+    color: var(--color-neon-cyan);
+
+    &::after {
+      width: calc(100% - 2rem);
+    }
+  }
 }
 
-.nav-link{
-  font-size: 20px;
-  font-family: Nexa;
+.nav-link {
+  font-size: 1.125rem;
+  font-family: 'Nexa';
   text-align: center;
   opacity: 1;
-  font-weight: bold;
-  color: #FFFFFF;
-  margin: 0 0 0 0!important;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin: 0 !important;
+  position: relative;
+  transition: color 0.2s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    transition: width 0.2s ease;
+  }
 }
 
 li a {
@@ -35,49 +92,114 @@ li a {
   text-decoration: none;
   cursor: pointer;
   text-transform: capitalize;
+  overflow: hidden;
 }
 
-/* Change the link color on hover */
+// Efectos de hover mejorados (sin movimiento)
 li a:hover {
-  background-color: #0092B8;
-  color: #FFFFFF;
+  background: var(--gradient-accent);
+  color: var(--color-text-primary);
   margin: 0;
+  box-shadow: var(--shadow-neon-cyan);
+
+  &::before {
+    width: 80%;
+  }
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-  font-size: 20px;
-  font-family: Nexa;
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  font-size: 1.125rem;
+  font-family: 'Nexa-Bold';
   text-align: center;
   opacity: 1;
   font-weight: bold;
-  color: #FFFFFF;
-}
-.active {
-  background-color: #03aed8;
-  margin: 0 0 0 0!important;
+  color: var(--color-text-primary);
+  background: var(--gradient-primary);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-neon-cyan);
+    box-shadow: var(--shadow-neon-cyan);
+  }
 }
 
-.bi-person-circle{
-  font-size: 20pt;
-  color: #FFFFFF;
+.active {
+  background: var(--gradient-primary) !important;
+  margin: 0 !important;
+  box-shadow: var(--shadow-neon-purple);
 }
-.dropdown-toggle{
-  font-size: 15pt;
-  color: #FFFFFF;
+
+// Iconos de usuario
+.bi-person-circle {
+  font-size: 1.5rem;
+  color: var(--color-neon-cyan);
+  transition: color 0.2s ease;
+  filter: drop-shadow(0 0 5px var(--color-neon-cyan));
+
+  &:hover {
+    color: var(--color-neon-magenta);
+    filter: drop-shadow(0 0 15px var(--color-neon-magenta));
+  }
 }
+
+.dropdown-toggle {
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-neon-cyan);
+  }
+}
+
+.dropdown-menu {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--border-radius-md);
+
+  .dropdown-item {
+    color: var(--color-text-secondary);
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: var(--gradient-accent);
+      color: var(--color-text-primary);
+    }
+  }
+}
+
 .dropdown-menu[data-bs-popper] {
-  right: 0!important;
+  right: 0 !important;
   left: auto;
 }
-.navbar-toggler-icon{
-  color: #FFFFFF;
+
+.navbar-toggler {
+  border-color: var(--glass-border);
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(79, 172, 254, 0.25);
+  }
 }
+
 .navbar-toggler-icon {
+  color: var(--color-text-primary);
   vertical-align: 0;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }

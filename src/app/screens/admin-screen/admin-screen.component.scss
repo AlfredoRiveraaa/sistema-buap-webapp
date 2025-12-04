@@ -1,103 +1,234 @@
-.wrapper{
+// ============================================
+// 👨‍💼 PANTALLA DE ADMIN - DISEÑO MODERNO (SIN ANIMACIONES)
+// ============================================
+
+.wrapper {
   width: 100vw;
-  height: 90vh;
+  min-height: 90vh;
+  padding: 2rem 0;
 }
 
-.header-home{
+.header-home {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  margin-bottom: 2rem;
+  padding: 0 3rem;
 }
 
-.body-admin{
+.body-admin {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  padding: 0 3rem;
 }
 
-.container{
+.container {
   max-width: 90vw;
 }
 
-.title-perfil{
-  margin-left: 3rem;
-  font-size: 32px;
+// Título de Bienvenida - Legibilidad mejorada
+.title-perfil {
+  margin-left: 0;
+  font-size: 2.5rem;
   text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 0px;
-  color: #231F20;
+  font-family: 'Nexa-Bold';
+  letter-spacing: 0.5px;
+  color: var(--color-neon-cyan); // Color sólido para mejor lectura
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.3); // Sutil brillo para destacar
+  text-transform: capitalize;
+  opacity: 1;
+  position: relative;
+  display: inline-block;
+
+  // Subrayado decorativo estático
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-neon-cyan);
+    box-shadow: 0 0 5px var(--color-neon-cyan);
+  }
+}
+
+// Contenedor del título de la tabla (Alert)
+.alert-primary {
+  background: var(--glass-bg) !important; // Fondo oscuro glass
+  border: 1px solid var(--color-neon-cyan) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+  color: var(--color-text-primary) !important;
+}
+
+.title-table {
+  margin-left: 0;
+  font-size: 1.75rem;
+  text-align: center;
+  font-family: 'Nexa-Bold';
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary); // Texto blanco sobre fondo oscuro
   text-transform: capitalize;
   opacity: 1;
 }
 
-.title-table{
-  margin-left: 3rem;
-  font-size: 28px;
-  text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 0px;
-  color: #231F20;
-  text-transform: capitalize;
-  opacity: 1;
+// ============================================
+// 📊 TABLA MODERNA
+// ============================================
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-primary);
 }
 
-thead{
-  border-bottom: #231F20;
+thead {
+  background: var(--color-bg-tertiary);
+  border-bottom: 2px solid var(--color-neon-cyan);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-neon-cyan);
+  }
 }
-tr td{
+
+// Sobrescribir estilos de Bootstrap para table-striped
+::ng-deep .table-striped>tbody>tr:nth-of-type(odd)>* {
+  --bs-table-accent-bg: rgba(255, 255, 255, 0.05) !important;
+  color: var(--color-text-primary) !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .table-striped>tbody>tr:nth-of-type(even)>* {
+  --bs-table-accent-bg: transparent !important;
+  color: var(--color-text-primary) !important;
+  box-shadow: none !important;
+}
+
+tr {
+  transition: background-color 0.2s ease; // Solo transición de color suave
+
+  &:hover {
+    background: rgba(79, 172, 254, 0.1) !important;
+
+    td {
+      color: var(--color-neon-cyan) !important;
+    }
+  }
+}
+
+tr td {
   height: 3rem;
+  border-bottom: 1px solid var(--glass-border);
+  vertical-align: middle;
+  background-color: transparent;
 }
 
-th{
-  font-family: Nexa-Bold!important;
-  font-size: 18px;
+th {
+  font-family: 'Nexa-Bold' !important;
+  font-size: 1.125rem;
   text-align: left;
-  letter-spacing: 0px;
-  color: #231F20;
+  letter-spacing: 0.5px;
+  color: var(--color-neon-cyan) !important;
   opacity: 1;
+  padding: 1.25rem 1rem;
+  text-transform: uppercase;
+  border: none;
+  background-color: var(--color-bg-tertiary);
 }
-td{
+
+td {
   text-align: left;
-  font-family: Nexa!important;
-  font-size: 15px!important;
-  letter-spacing: 0px!important;
-  color: #231F20!important;
-  opacity: 1!important;
-  padding-top: 18px;
+  font-family: 'Nexa' !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.3px !important;
+  color: var(--color-text-primary) !important;
+  opacity: 1 !important;
+  padding: 1rem !important;
+  border: none;
 }
 
-//Editar
-.td-editar{
-  color: #0092B8!important;
-  cursor: pointer!important;
-  font-size: 20px!important;
-  padding-left: 1.5rem;
-  //text-align: center;
+// ============================================
+// ✏️ BOTONES DE ACCIÓN - EDITAR
+// ============================================
+.td-editar {
+  color: var(--color-neon-cyan) !important;
+  cursor: pointer !important;
+  font-size: 1.25rem !important;
+  text-align: center !important;
+  transition: color 0.2s ease; // Solo transición de color
+  position: relative;
 }
 
-.td-editar:hover{
-  color: #006179!important;
-  font-size: 25px!important;
-  padding-left: 1.5rem;
-  //text-align: center;
+.td-editar:hover {
+  color: var(--color-neon-blue) !important;
+  filter: drop-shadow(0 0 5px var(--color-neon-cyan));
 }
 
-//Eliminar
-.td-eliminar{
-  color: #E84150!important;
-  cursor: pointer!important;
-  font-size: 20px!important;
-  padding-left: 1.5rem;
-  //text-align: center;
+// ============================================
+// 🗑️ BOTONES DE ACCIÓN - ELIMINAR
+// ============================================
+.td-eliminar {
+  color: var(--color-neon-magenta) !important;
+  cursor: pointer !important;
+  font-size: 1.25rem !important;
+  text-align: center !important;
+  transition: color 0.2s ease; // Solo transición de color
+  position: relative;
 }
 
-.td-eliminar:hover{
-  color: #ce1626!important;
-  font-size: 25px!important;
-  padding-left: 1.5rem;
-  //text-align: center;
+.td-eliminar:hover {
+  color: var(--color-error) !important;
+  filter: drop-shadow(0 0 5px var(--color-neon-magenta));
+}
+
+// ============================================
+// 📱 RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem 0;
+  }
+
+  .header-home,
+  .body-admin {
+    padding: 0 1rem;
+  }
+
+  .title-perfil {
+    font-size: 2rem;
+  }
+
+  .title-table {
+    font-size: 1.5rem;
+  }
+
+  th {
+    font-size: 0.875rem;
+    padding: 1rem 0.5rem;
+  }
+
+  td {
+    font-size: 0.875rem !important;
+    padding: 0.75rem 0.5rem !important;
+  }
 }

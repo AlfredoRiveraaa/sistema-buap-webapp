@@ -1,104 +1,238 @@
-.wrapper{
+// ============================================
+// 👨‍🏫 PANTALLA DE MAESTROS - DISEÑO MODERNO (SIN ANIMACIONES)
+// ============================================
+
+.wrapper {
   width: 100vw;
-  height: 90vh;
+  min-height: 90vh;
+  padding: 2rem 0;
+  position: relative;
 }
 
-.header-home{
+.header-home {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  margin-bottom: 2rem;
+  padding: 0 3rem;
 }
 
-.body-alumnos{
+.body-maestros {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  padding: 0 3rem;
 }
 
-.container{
+.container {
   max-width: 90vw;
 }
-.title-perfil{
-  margin-left: 3rem;
-  font-size: 32px;
+
+// Título de Bienvenida - Legibilidad mejorada
+.title-perfil {
+  margin-left: 0;
+  font-size: 2.5rem;
   text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 0px;
-  color: #231F20;
+  font-family: 'Nexa-Bold';
+  letter-spacing: 0.5px;
+  color: var(--color-neon-cyan); // Color sólido
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
   text-transform: capitalize;
   opacity: 1;
-}
+  position: relative;
+  display: inline-block;
 
-.title-table{
-  margin-left: 3rem;
-  font-size: 28px;
-  text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 0px;
-  color: #231F20;
-  text-transform: capitalize;
-  opacity: 1;
-}
-
-//Estilos de la tabla
-table {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
     width: 100%;
-    padding-bottom: 1.5rem;
+    height: 2px;
+    background: var(--color-neon-cyan);
+    box-shadow: 0 0 5px var(--color-neon-cyan);
+  }
 }
 
-// .mat-elevation-z8{
-//     width: 100%;
-// }
-::ng-deep .mat-mdc-table{
-  table-layout: fixed!important;
+// Contenedor del título de la tabla (Alert)
+.alert-primary {
+  background: var(--glass-bg) !important; // Fondo oscuro glass
+  border: 1px solid var(--color-neon-cyan) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+  color: var(--color-text-primary) !important;
 }
-.mat-mdc-header-cell {
-  border-bottom-color: #231F20;
-  font-family: Nexa-Bold!important;
-  font-size: 18px;
-  text-align: left;
-  letter-spacing: 0px;
-  color: #231F20;
+
+.title-table {
+  margin-left: 0;
+  font-size: 1.75rem;
+  text-align: center;
+  font-family: 'Nexa-Bold';
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
+  text-transform: capitalize;
   opacity: 1;
+}
+
+// ============================================
+// 📊 ESTILOS DE TABLA MODERNOS
+// ============================================
+.mat-elevation-z8 {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+}
+
+// Adaptación para Angular Material Table
+::ng-deep .mat-mdc-table {
+  background: transparent !important;
+}
+
+// Header
+.mat-mdc-header-row {
+  background: var(--color-bg-tertiary) !important;
+  border-bottom: 2px solid var(--color-neon-cyan);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-neon-cyan);
+    z-index: 1;
+  }
+}
+
+.mat-mdc-header-cell {
+  font-family: 'Nexa-Bold' !important;
+  font-size: 1.125rem !important;
+  text-align: left;
+  letter-spacing: 0.5px;
+  color: var(--color-neon-cyan) !important;
+  opacity: 1;
+  padding: 1.25rem 1rem !important;
+  text-transform: uppercase;
+  border-bottom: none !important;
+  background: transparent !important;
+}
+
+// Filas y Celdas
+::ng-deep .mat-mdc-row {
+  transition: background-color 0.2s ease;
+  background-color: transparent !important;
+
+  &:hover {
+    background: rgba(79, 172, 254, 0.1) !important;
+
+    .mat-mdc-cell {
+      color: var(--color-neon-cyan) !important;
+    }
+  }
+}
+
+// Alternar colores de fondo para filas
+::ng-deep .mat-mdc-row:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+::ng-deep .mat-mdc-row:nth-child(even) {
+  background-color: transparent !important;
 }
 
 .mat-mdc-cell {
-    text-align: left;
-    font-family: Nexa!important;
-    font-size: 15px!important;
-    letter-spacing: 0px!important;
-    color: #231F20!important;
-    opacity: 1!important;
+  text-align: left;
+  font-family: 'Nexa' !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.3px !important;
+  color: var(--color-text-primary) !important;
+  opacity: 1 !important;
+  padding: 1rem !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  vertical-align: middle;
 }
 
-//Editar
-.td-editar{
-    color: #0092B8!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    text-align: center;
+// ============================================
+// ✏️ BOTONES DE ACCIÓN - EDITAR
+// ============================================
+.td-editar {
+  color: var(--color-neon-cyan) !important;
+  cursor: pointer !important;
+  font-size: 1.25rem !important;
+  text-align: center !important;
+  transition: color 0.2s ease;
+  position: relative;
 }
 
-.td-editar:hover{
-    color: #006179!important;
-    font-size: 25px!important;
-    text-align: center;
+.td-editar:hover {
+  color: var(--color-neon-blue) !important;
+  filter: drop-shadow(0 0 5px var(--color-neon-cyan));
 }
 
-//Eliminar
-.td-eliminar{
-    color: #E84150!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    text-align: center;
+// ============================================
+// 🗑️ BOTONES DE ACCIÓN - ELIMINAR
+// ============================================
+.td-eliminar {
+  color: var(--color-neon-magenta) !important;
+  cursor: pointer !important;
+  font-size: 1.25rem !important;
+  text-align: center !important;
+  transition: color 0.2s ease;
+  position: relative;
 }
 
-.td-eliminar:hover{
-    color: #ce1626!important;
-    font-size: 25px!important;
-    text-align: center;
+.td-eliminar:hover {
+  color: var(--color-error) !important;
+  filter: drop-shadow(0 0 5px var(--color-neon-magenta));
+}
+
+// ============================================
+// 📱 RESPONSIVE DESIGN
+// ============================================
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem 0;
+  }
+
+  .header-home,
+  .body-maestros {
+    padding: 0 1rem;
+  }
+
+  .title-perfil {
+    font-size: 2rem;
+  }
+
+  .title-table {
+    font-size: 1.5rem;
+  }
+
+  .mat-mdc-header-cell {
+    font-size: 0.875rem !important;
+    padding: 1rem 0.5rem !important;
+  }
+
+  .mat-mdc-cell {
+    font-size: 0.875rem !important;
+    padding: 0.75rem 0.5rem !important;
+  }
 }

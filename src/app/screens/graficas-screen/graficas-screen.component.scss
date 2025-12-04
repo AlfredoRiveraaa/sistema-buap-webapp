@@ -1,10 +1,12 @@
-/* ============================================================
-   AJUSTES GENERALES DEL SIDEBAR Y LAYOUT
-   ============================================================ */
+// ============================================
+// 📊 PANTALLA DE GRÁFICAS - DISEÑO MODERNO
+// ============================================
 
 $sidebar-width: 220px;
 
-/* Sidebar visible en desktop */
+// ============================================
+// LAYOUT PRINCIPAL
+// ============================================
 .main-content-graficas {
   margin-left: $sidebar-width;
   transition: margin-left 0.3s ease;
@@ -17,16 +19,17 @@ $sidebar-width: 220px;
 .wrapper {
   min-height: 100vh;
   transition: margin-left 0.3s ease;
+  padding: 2rem 0;
 
   @media (max-width: 991px) {
     margin-left: 0;
+    padding: 1rem 0;
   }
 }
 
-/* ============================================================
-   ESTRUCTURA BASE
-   ============================================================ */
-
+// ============================================
+// ESTRUCTURA BASE
+// ============================================
 .section-home,
 .body-home {
   width: 100%;
@@ -34,10 +37,9 @@ $sidebar-width: 220px;
   flex-direction: column;
 }
 
-/* ============================================================
-   CONTENEDOR GENERAL
-   ============================================================ */
-
+// ============================================
+// CONTENEDOR GENERAL
+// ============================================
 .container {
   width: 100%;
   max-width: 100%;
@@ -48,128 +50,183 @@ $sidebar-width: 220px;
   }
 }
 
-/* ============================================================
-   TIPOGRAFÍA RESPONSIVA
-   ============================================================ */
-
+// ============================================
+// TIPOGRAFÍA MODERNA
+// ============================================
 .title-perfil {
-  font-family: Nexa-Bold;
+  font-family: 'Nexa-Bold';
   text-transform: capitalize;
   font-size: clamp(1.6rem, 2.3vw, 2.4rem);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  animation: fadeInLeft 0.6s ease;
 }
 
 .title-table {
-  font-family: Nexa-Bold;
+  font-family: 'Nexa-Bold';
   text-transform: capitalize;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  animation: fadeInLeft 0.8s ease;
 }
 
-/* ============================================================
-   ALERTA DECORATIVA
-   ============================================================ */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ============================================
+// ALERTA DECORATIVA
+// ============================================
 .alert-primary {
-  border-radius: 10px;
-  padding: 1em;
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
   display: flex;
   justify-content: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: var(--color-text-primary);
+  font-family: 'Nexa';
+  animation: fadeIn 0.6s ease;
 }
 
-/* ============================================================
-   GRID PARA GRÁFICAS – VERSIÓN MEJORADA
-   ============================================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
+  to {
+    opacity: 1;
+  }
+}
+
+// ============================================
+// GRID PARA GRÁFICAS
+// ============================================
 .graph-section,
 .user-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2rem; /* Aumentado para aire visual */
+  gap: 2rem;
   width: 100%;
   margin-bottom: 3rem;
 
-  /* Mobile */
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
 
-  /* Tablet Vertical / Horizontal (768×1024 y 1024×768) */
   @media (min-width: 577px) and (max-width: 1024px) {
-    grid-template-columns: 1fr; /* Una gráfica por fila */
-    gap: 2.5rem; /* Más aire para gráficas más grandes */
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
-  /* Desktop grande */
   @media (min-width: 1440px) {
     gap: 3rem;
-    grid-template-columns: repeat(2, 1fr); /* Dos gráficas grandes por fila */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* ============================================================
-   CONTENEDOR DE CADA GRÁFICA
-   ============================================================ */
-
+// ============================================
+// CONTENEDOR DE CADA GRÁFICA
+// ============================================
 .graph {
   width: 100%;
-  max-width: 620px; /* Aumentado respecto a versión anterior */
+  max-width: 620px;
   margin: 0 auto;
-  padding: 1.5rem 0.8rem;
+  padding: 2rem 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* Tablet 768×1024 – hacer gráficas más grandes */
+  // Glassmorphism
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--glass-shadow);
+
+  transition: all var(--transition-normal);
+  animation: scaleIn 0.6s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(79, 172, 254, 0.3);
+    border-color: var(--color-neon-cyan);
+  }
+
   @media (min-width: 577px) and (max-width: 1024px) {
-    max-width: 90vw;   /* Se expanden casi al ancho completo */
+    max-width: 90vw;
     padding: 2rem 0.8rem;
   }
 
-  /* Desktop 1440 – hacerlas más llamativas */
   @media (min-width: 1440px) {
-    max-width: 750px; /* Aumentadas en desktop */
-    padding: 2rem 1rem;
+    max-width: 750px;
+    padding: 2.5rem 2rem;
   }
 }
 
-/* ============================================================
-   CANVAS RESPONSIVO (Chart.js)
-   ============================================================ */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ============================================
+// CANVAS RESPONSIVO (Chart.js)
+// ============================================
 canvas {
   width: 100% !important;
   height: auto !important;
   max-width: 100%;
   min-height: 260px;
   display: block;
+  border-radius: var(--border-radius-sm);
 
-  /* Tablet */
   @media (min-width: 577px) and (max-width: 1024px) {
-    min-height: 360px; /* Más altura = más impacto visual */
+    min-height: 360px;
   }
 
-  /* Desktop amplio */
   @media (min-width: 1440px) {
-    min-height: 420px; /* Gráficas más grandes */
+    min-height: 420px;
   }
 }
 
-/* ============================================================
-   PREVENCIÓN DE OVERFLOW EN IOS
-   ============================================================ */
-
+// ============================================
+// PREVENCIÓN DE OVERFLOW
+// ============================================
 body,
 html {
   overflow-x: hidden;
 }
 
-/* ============================================================
-   PANTALLAS ULTRA PEQUEÑAS
-   ============================================================ */
-
+// ============================================
+// PANTALLAS ULTRA PEQUEÑAS
+// ============================================
 @media (max-width: 350px) {
   .graph {
     max-width: 96vw;
-    padding: 0.5rem 0;
+    padding: 1rem 0.5rem;
   }
 }
