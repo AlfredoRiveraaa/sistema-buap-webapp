@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { FacadeService } from 'src/app/services/facade.service';
 
@@ -14,7 +15,8 @@ export class AdminScreenComponent implements OnInit{
 
   constructor(
     private administradoresService: AdministradoresService,
-    private facadeService: FacadeService
+    private facadeService: FacadeService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class AdminScreenComponent implements OnInit{
 
 
   public goEditar(idUser: number){
-
+    this.router.navigate(["registro-usuarios/administrador/"+idUser]);
   }
 
   public delete(idUser: number){
