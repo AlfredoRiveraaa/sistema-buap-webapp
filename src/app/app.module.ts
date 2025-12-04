@@ -38,6 +38,8 @@ import { AdminScreenComponent } from './screens/admin-screen/admin-screen.compon
 import { AlumnosScreenComponent } from './screens/alumnos-screen/alumnos-screen.component';
 import { MaestrosScreenComponent } from './screens/maestros-screen/maestros-screen.component';
 import { EliminarUserModalComponent } from './modals/eliminar-usuario-modal/eliminar-usuario-modal.component';
+import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { EliminarUserModalComponent } from './modals/eliminar-usuario-modal/elim
     AdminScreenComponent,
     AlumnosScreenComponent,
     MaestrosScreenComponent,
-    EliminarUserModalComponent
+    EliminarUserModalComponent,
+    GraficasScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { EliminarUserModalComponent } from './modals/eliminar-usuario-modal/elim
     NgxMaskDirective,
     MatTableModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    NgChartsModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
